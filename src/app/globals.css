@@ -48,7 +48,29 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@theme {
+  --color-primary: #0f172a;
+  --color-primary-foreground: #f8fafc;
+  
+  --sidebar-background: 0 0% 100%; /* Blanco puro */
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --color-sidebar-primary: #3b82f6;
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #0f172a;
+  --color-sidebar-primary: #0f172a;
+  --color-sidebar-border: #e2e8f0;
+}
 :root {
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 240 10% 3.9%;
+  --background: 0 0% 100%;
+}
+/* Mejora el fondo general para que las tarjetas resalten más */
+body {
+  background-color: #f8fafc!important; 
+  color: #0f172a;
+}
+/* :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -81,9 +103,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
+} */
 
 .dark {
+  --sidebar-background: 240 10% 3.9%;
+  --sidebar-foreground: 0 0% 98%;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
