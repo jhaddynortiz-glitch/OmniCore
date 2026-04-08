@@ -1,50 +1,28 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageSquare, DollarSign, Users, TrendingUp } from "lucide-react";
+import { db } from "@/lib/db"
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const totalContacts = await db.contact.count()
+  const totalMessages = await db.message.count()
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Bienvenido, Jhaddyn</h2>
-        <p className="text-slate-500">Esto es lo que está pasando en OmniCore hoy.</p>
-      </div>
-      
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <StatsCard 
-          title="Chats Activos" 
-          value="24" 
-          description="+12% desde ayer" 
-          icon={<MessageSquare className="text-blue-600" />} 
-        />
-        <StatsCard 
-          title="Ventas Hoy" 
-          value="$1,200.00" 
-          description="+5% vs promedio" 
-          icon={<DollarSign className="text-emerald-600" />} 
-        />
-        <StatsCard 
-          title="Nuevos Clientes" 
-          value="14" 
-          description="Interceptados hoy" 
-          icon={<Users className="text-violet-600" />} 
-        />
-        <StatsCard 
-          title="Tasa de Cierre" 
-          value="64%" 
-          description="+2% este mes" 
-          icon={<TrendingUp className="text-orange-600" />} 
-        />
-      </div>
-
-      {/* Aquí irá luego la lista de chats recientes */}
-      <div className="h-[300px] w-full bg-white rounded-xl border-2 border-dashed border-slate-200 flex items-center justify-center text-slate-400">
-        Próximamente: Gráfico de actividad de mensajes
+    <div className="p-8">
+      <h1 className="text-3xl font-bold">Bienvenido, Jhaddyn</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <div className="p-6 bg-white rounded-xl border shadow-sm">
+          <p className="text-sm text-slate-500">Contactos Totales</p>
+          <p className="text-4xl font-bold">{totalContacts}</p>
+        </div>
+        <div className="p-6 bg-white rounded-xl border shadow-sm">
+          <p className="text-sm text-slate-500">Mensajes Interceptados</p>
+          <p className="text-4xl font-bold">{totalMessages}</p>
+        </div>
       </div>
     </div>
-  );
+  )
 }
 
-function StatsCard({ title, value, description, icon }: any) {
+/* function StatsCard({ title, value, description, icon }: any) {
   return (
     <Card className="border-none shadow-sm hover:shadow-md transition-shadow">
       <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
@@ -59,4 +37,4 @@ function StatsCard({ title, value, description, icon }: any) {
       </CardContent>
     </Card>
   );
-}
+} */
